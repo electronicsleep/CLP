@@ -2,11 +2,11 @@ import click
 import subprocess
 
 @click.command()
-@click.option('--count', default=1, help='Number of iterations.')
-@click.option('--verbose', is_flag=True, help='Print verbose output.')
+@click.option('-c', '--count', default=1, help='Number of iterations.')
+@click.option('-v', '--verbose', is_flag=True, help='Print verbose output.')
 
 def main(count, verbose):
-    """Program that runs a specfic command for count iterations."""
+    """ Example program that runs a specfic command a number of times and scans output. """
 
     for x in range(count):
 
