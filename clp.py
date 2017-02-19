@@ -18,6 +18,7 @@ def main(count, verbose):
         if verbose:
             click.echo("We are in the verbose mode.")
 
+        print("#Python open file example")
         with open('data.txt', 'rU') as f:
             for line in f:
                 line_num += 1
@@ -26,10 +27,10 @@ def main(count, verbose):
                 print(line.strip())
 
         print('lines: ' + str(line_num))
-
         print("#" * 10)
 
         line_num = 0
+        print("#Python subprocess example")
         pipe = subprocess.Popen('ls -ltra', shell=True, stdout=subprocess.PIPE)
         for line in pipe.stdout:
             print(line.strip())
@@ -40,9 +41,9 @@ def main(count, verbose):
                 if '.txt' in line:
                     print("found txt file")
 
-        print('lines: ' + str(line_num))
+        print('Lines: ' + str(line_num))
 
-    print('RUN:')
+    print('Run: ', end='')
     print(x + 1)
 
 if __name__ == '__main__':
