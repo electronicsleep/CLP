@@ -18,18 +18,12 @@ def main(count, verbose):
         if verbose:
             click.echo("We are in the verbose mode.")
 
- 
         with open('data.txt', 'rU') as f:
             for line in f:
                 line_num += 1
                 if 'bar' in line:
                     print("found bar")
                 print(line.strip())
-        #pipe = subprocess.Popen('cat data.txt', shell=True, stdout=subprocess.PIPE)
-        #for line in pipe.stdout:
-            #print(line.strip())
-            line_num += 1
-
 
         print('lines: ' + str(line_num))
 
@@ -50,7 +44,6 @@ def main(count, verbose):
 
     print('RUN:')
     print(x + 1)
-
 
 if __name__ == '__main__':
     main()
