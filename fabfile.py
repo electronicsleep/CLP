@@ -11,14 +11,16 @@ from fabric.api import env,execute,hosts,sudo
 
 #from inventory import *
 
+# Update host roles
 env.roledefs = {
-    'dev': ['www.yourideaspace.com'],
+    'dev': ['dev'],
     'production': ['prod-web1', 'prod-web2'],
     'mail': ['mail1', 'mail2'],
     'web': ['prod-web1', 'prod-web2'],
     'all' : ['dev'] + ['Prod']
 }
 
+# Use all as default
 if not len(env.roles):
     env.roles = ["all"]
 
@@ -26,4 +28,13 @@ if not len(env.roles):
 def deploy():
     """Deploy to environments"""
     run('echo test')
-    run('hostname')
+    output = run('hostname')
+
+    if(output.return_code != 0):
+        error = "Error %s: %s" %(command, x.stderr)
+        print error
+        print x.return_code 
+        raise Exception(error) 
+    else:
+        print "the output of %s is: %s" %(command, x)
+        print x.return_code # which is 0
