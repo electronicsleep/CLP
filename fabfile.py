@@ -17,7 +17,7 @@ env.roledefs = {
     'production': ['prod-web1', 'prod-web2'],
     'mail': ['mail1', 'mail2'],
     'web': ['prod-web1', 'prod-web2'],
-    'all' : ['dev'] + ['Prod']
+    'all': ['dev'] + ['Prod']
 }
 
 # Use all as default
