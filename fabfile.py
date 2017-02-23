@@ -32,8 +32,8 @@ def deploy():
 
     if(output.return_code != 0):
         print("Error")
-        print (output)
-        print (output.return_code)
+        print(output)
+        print(output.return_code)
         #raise Exception(error) 
     else:
         print(output.return_code)
