@@ -13,7 +13,7 @@ from fabric.api import env,execute,hosts,sudo
 
 # Update host roles
 env.roledefs = {
-    'dev': ['dev'],
+    'dev': ['www.yourideaspace.com'],
     'production': ['prod-web1', 'prod-web2'],
     'mail': ['mail1', 'mail2'],
     'web': ['prod-web1', 'prod-web2'],
@@ -31,10 +31,10 @@ def deploy():
     output = run('hostname')
 
     if(output.return_code != 0):
-        error = "Error %s: %s" %(command, x.stderr)
-        print error
-        print x.return_code 
-        raise Exception(error) 
+        print("Error")
+        print (output)
+        print (output.return_code)
+        #raise Exception(error) 
     else:
-        print "the output of %s is: %s" %(command, x)
-        print x.return_code # which is 0
+        print(output.return_code)
+        print("OK")
