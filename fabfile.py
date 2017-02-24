@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #fab -R dev deploy
 import time
 
