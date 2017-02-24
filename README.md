@@ -1,6 +1,6 @@
 # CLP
 CLP
 
-Command line Python
+Command Line Python
 
-Simple examples
+Simple Examples
