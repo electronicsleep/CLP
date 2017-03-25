@@ -35,7 +35,8 @@ def main(count, verbose):
 
         line_num = 0
         print("#Python subprocess example")
-        pipe = subprocess.Popen('ls -ltra', shell=True, stdout=subprocess.PIPE)
+        command =  'ls -ltra'
+        pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         for line in pipe.stdout:
             print(line.strip())
             line_num += 1
@@ -47,13 +48,13 @@ def main(count, verbose):
             if '.txt' in line:
                 if verbose:
                     print("found txt file")
-                found_list.append("found txt file" + line.strip())
+                found_list.append("found txt file: " + line.strip())
 
         print('Lines: ' + str(line_num))
 
     print("Found List")
     for item in found_list:
-        print("-item: " + item)
+        print("FOUND: " + item)
 
     print('Run: ', end='')
     print(x + 1)
