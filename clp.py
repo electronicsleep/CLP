@@ -2,16 +2,15 @@
 from __future__ import print_function
 import click
 import subprocess
-import six 
+
 
 @click.command()
 @click.option('-c', '--count', default=1, help='Number of iterations.')
 @click.option('-v', '--verbose', is_flag=True, help='Print verbose output.')
-
-
 def main(count, verbose):
     """ Example program that runs a specfic command a number of times and scans output. """
 
+    x = 0
     found_list = []
 
     for x in range(count):
@@ -35,7 +34,7 @@ def main(count, verbose):
 
         line_num = 0
         print("#Python subprocess example")
-        command =  'ls -ltra'
+        command = 'ls -ltra'
         pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         for line in pipe.stdout:
             print(line.strip())
