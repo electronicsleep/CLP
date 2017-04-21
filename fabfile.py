@@ -1,5 +1,12 @@
 #!/usr/bin/env python
+
+# Author: https://github.com/electronicsleep
+# Date: 01/30/2017
+# Purpose: Command Line Python Examples
+# Released under the BSD license
+
 #fab -R dev deploy
+
 import time
 
 from termcolor import colored

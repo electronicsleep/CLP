@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+
+# Author: https://github.com/electronicsleep
+# Date: 01/30/2017
+# Purpose: Command Line Python Examples
+# Released under the BSD license
+
 from __future__ import print_function
 import click
 import subprocess
