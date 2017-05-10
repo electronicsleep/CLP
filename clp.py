@@ -18,7 +18,7 @@ print("Date:" + localtime)
 @click.option('-c', '--count', default=1, help='Number of iterations.')
 @click.option('-v', '--verbose', default=True, is_flag=True, help='Print verbose output.')
 def main(count, verbose):
-    """ Example program that runs a specfic command a number of times and scans output. """
+    """ Example program that runs a specific command a number of times and scans output. """
 
     x = 0
     found_list = []
