@@ -8,11 +8,15 @@
 from __future__ import print_function
 import click
 import subprocess
+import time
+
+localtime = time.asctime(time.localtime(time.time()))
+print("Date:" + localtime)
 
 
 @click.command()
 @click.option('-c', '--count', default=1, help='Number of iterations.')
-@click.option('-v', '--verbose', is_flag=True, help='Print verbose output.')
+@click.option('-v', '--verbose', default=True, is_flag=True, help='Print verbose output.')
 def main(count, verbose):
     """ Example program that runs a specfic command a number of times and scans output. """
 
