@@ -18,7 +18,7 @@ def return_inventory():
         'prod': ['www' + hn],
         'mail': ['mail' + hn],
     }
-    for roles in env.roledefs:
-        env.roledefs['all'] += roles
+    env.roledefs['all'] = env.roledefs['dev'] + env.roledefs['prod'] + env.roledefs['mail'] + env.roledefs['web']
+    env.roledefs['all'] = env.roledefs['all'] + env.roledefs['db'] + env.roledefs['mon']
 
     return env.roledefs
