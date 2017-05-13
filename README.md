@@ -1,5 +1,4 @@
 # CLP
-CLP
 
 Command Line Python
 
