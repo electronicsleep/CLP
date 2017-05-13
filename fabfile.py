@@ -5,6 +5,10 @@
 # Purpose: Command Line Python Examples
 # Released under the BSD license
 
+# Default to all
+# fab check_top
+
+# Role based targeting
 # fab -R test deploy
 
 import time
@@ -72,18 +76,20 @@ def check_type():
 
 
 @task
+def check_disk():
+    """Check disk resources"""
+    check_space()
+    check_space_inodes()
+
+
 def check_space():
     output = run('df -h')
-    if output.return_code != 0:
-        print("ERROR RUNNING COMMAND")
-        error = "On %s: %s" % ("df -h1123", output.stderr)
-        print(error)
-        print(output.return_code)
-        print("Run command error")
-        exit(1)
-    else:
-        print("DISK SPACE:")
-        print(output.text)
+    print(output)
+
+
+def check_space_inodes():
+    output = run('df -ih')
+    print(output)
 
 
 @task
@@ -152,6 +158,6 @@ def check_mysql():
 def check_ntp():
     output = run('ps -ef | grep ntp')
     if "pid" not in output:
-        print(colored("run_error_tex", 'red'))
+        print(colored(run_error_text, 'red'))
         output = run('su - -c "service ntp restart"')
         print(output)
