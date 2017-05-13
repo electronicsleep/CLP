@@ -34,6 +34,24 @@ if not len(env.roles):
 
 
 @task
+def check_systems():
+    """Check basic functions of the system for health"""
+    check_users()
+    check_fail2ban()
+    check_ntp()
+    if env.host in env.roledefs['db']:
+        print("Check DB")
+        check_mysql()
+    if env.host in env.roledefs['mail']:
+        print "CHECK SPAM ON MAILSERVER"
+        check_postfix()
+        check_spamassassin()
+    if env.host in env.roledefs['mon']:
+        print "CHECK NAGIOS ON MONITOR"
+        check_nagios()
+
+
+@task
 def deploy():
     """Deploy to environments"""
     run('echo test')
@@ -70,9 +88,14 @@ def check_load():
     run('w')
 
 
+def check_users():
+    output = run('w')
+    print(output)
+
+
 def check_type():
-    ret = run('uname -a')
-    print ret
+    output = run('uname -a')
+    print(output)
 
 
 @task

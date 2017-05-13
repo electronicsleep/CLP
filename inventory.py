@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 # Author: https://github.com/electronicsleep
 # Date: 01/30/2017
 # Purpose: Command Line Python Examples
@@ -12,11 +11,14 @@ def return_inventory():
 
     hn = ".example.com"
     env.roledefs = {
+        'db': ['www' + hn],
         'dev': ['dev' + hn],
-        'prod': ['www' + hn],
-        'mail': ['www', 'mail' + hn],
         'web': ['www' + hn],
+        'mon': ['mon' + hn],
+        'prod': ['www' + hn],
+        'mail': ['mail' + hn],
     }
-    env.roledefs['all'] = env.roledefs['dev'] + env.roledefs['prod'] + env.roledefs['mail'] + env.roledefs['web']
+    for roles in env.roledefs:
+        env.roledefs['all'] += roles
 
     return env.roledefs
