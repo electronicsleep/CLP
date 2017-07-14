@@ -81,7 +81,7 @@ def check_resources():
     """Check resource related info"""
     check_load()
     check_type()
-    check_space()
+    check_disk()
 
 
 def check_load():

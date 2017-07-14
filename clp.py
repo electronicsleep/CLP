@@ -9,6 +9,7 @@ from __future__ import print_function
 import click
 import subprocess
 import time
+import os
 
 
 @click.command()
@@ -33,18 +34,23 @@ def main(count, verbose):
             click.echo("We are in the verbose mode.")
 
         print("#Python open file example")
-        with open('data.txt', 'rU') as f:
-            for line in f:
-                line_num += 1
-                if 'bar' in line:
-                    print("found bar")
-                    found_list.append("found bar")
-                print(line.strip())
+        file_path = "data.txt"
+        if os.path.exists(file_path):
+          with open(file_path, 'rU') as f:
+              for line in f:
+                  line_num += 1
+                  if 'bar' in line:
+                      print("found bar")
+                      found_list.append("found bar")
+                  print(line.strip())
+        else:
+          print("Data file not found")
 
         print('lines: ' + str(line_num))
         print("#" * 10)
 
         line_num = 0
+        exit(0)
         print("#Python subprocess example")
         command = 'ls -ltra'
         pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
@@ -52,7 +58,7 @@ def main(count, verbose):
             print(line.strip())
             line_num += 1
 
-            if '.py' in line:
+            if ".py" in line:
                 if verbose:
                     print("found python file")
                 found_list.append("found python file: " + line.strip())

@@ -9,6 +9,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        clp=clp:cli
+        clp=clp:main
     ''',
 )
