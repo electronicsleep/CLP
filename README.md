@@ -2,7 +2,7 @@
 
 Command Line Python
 
-Simple examples for using python fabric and click
+Examples for using python fabric and click
 
 Install
 ```
