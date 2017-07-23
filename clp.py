@@ -14,7 +14,7 @@ import os
 
 @click.command()
 @click.option('-c', '--count', default=1, help='Number of iterations.')
-@click.option('-v', '--verbose', default=True, is_flag=True, help='Print verbose output.')
+@click.option('-v', '--verbose', default=False, is_flag=True, help='Print verbose output.')
 def main(count, verbose):
     """ Example program that runs a specific command a number of times and scans output. """
 
@@ -33,7 +33,7 @@ def main(count, verbose):
         if verbose:
             click.echo("We are in the verbose mode.")
 
-        print("#Python open file example")
+        print("# Python open file example")
         file_path = "data.txt"
         if os.path.exists(file_path):
           with open(file_path, 'rU') as f:
@@ -52,7 +52,7 @@ def main(count, verbose):
         line_num = 0
 
         
-        print("#Python subprocess example, find number of python files in dir")
+        print("# Python subprocess example, find number of python files in dir")
         command = 'ls -ltra'
         num_files = 0
         pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
@@ -73,12 +73,13 @@ def main(count, verbose):
         print('Lines: ' + str(line_num))
         print('Found: ' + str(num_files) + " python files")
 
-    print("Found List")
-    for item in found_list:
-        print("FOUND: " + item)
+    if verbose:
+        print("Found List")
+        for item in found_list:
+            print("Found: " + item)
+        print('Run: ', end='')
+        print(x + 1)
 
-    print('Run: ', end='')
-    print(x + 1)
     end = time.time()
     print("Runtime: ", end='')
     print(end - start)
