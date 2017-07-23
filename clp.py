@@ -50,24 +50,28 @@ def main(count, verbose):
         print("#" * 10)
 
         line_num = 0
-        exit(0)
-        print("#Python subprocess example")
+
+        
+        print("#Python subprocess example, find number of python files in dir")
         command = 'ls -ltra'
+        num_files = 0
         pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         for line in pipe.stdout:
             print(line.strip())
             line_num += 1
 
-            if ".py" in line:
+            if ".py" in str(line):
                 if verbose:
                     print("found python file")
-                found_list.append("found python file: " + line.strip())
-            if '.txt' in line:
+                found_list.append("found python file: " + str(line.strip()))
+                num_files += 1
+            if '.txt' in str(line):
                 if verbose:
                     print("found txt file")
-                found_list.append("found txt file: " + line.strip())
+                found_list.append("found txt file: " + str(line.strip()))
 
         print('Lines: ' + str(line_num))
+        print('Found: ' + str(num_files) + " python files")
 
     print("Found List")
     for item in found_list:
