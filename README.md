@@ -2,9 +2,11 @@
 
 Command Line Python
 
-Examples for using python fabric and click
+Examples for using Python Fabric and Click
 
-Install
+Install:
 ```
+pip install -r requirements.txt
+
 pip install -e .
 ```
