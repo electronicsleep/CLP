@@ -19,7 +19,7 @@ from termcolor import colored
 from fabric.api import run, task
 from inventory import *
 
-print colored('Hello', 'cyan'), colored('Fabric', 'green')
+print(colored('Hello', 'cyan') + " " + colored('Fabric', 'green'))
 
 run_error_text = "ERROR NOT RUNNING"
 
@@ -43,11 +43,11 @@ def check_systems():
         print("Check DB")
         check_mysql()
     if env.host in env.roledefs['mail']:
-        print "CHECK SPAM ON MAILSERVER"
+        print("CHECK SPAM ON MAILSERVER")
         check_postfix()
         check_spamassassin()
     if env.host in env.roledefs['mon']:
-        print "CHECK NAGIOS ON MONITOR"
+        print("CHECK NAGIOS ON MONITOR")
         check_nagios()
 
 
@@ -118,8 +118,8 @@ def check_space_inodes():
 @task
 def check_top():
     """Check top and write a report"""
-    print "HOST:"
-    print env.host
+    print("HOST:")
+    print(env.host)
     output = run('top -n1 -b | head')
 
     host = env.host
@@ -141,7 +141,7 @@ def write_report(output):
 def check_fail2ban():
     output = run('ps -ef | grep fail2ban')
     if "pid" not in output:
-        print colored(run_error_text, 'red')
+        print(colored(run_error_text, 'red'))
         output = run('su - -c "service ntp fail2ban"')
         print(output)
 
@@ -149,7 +149,7 @@ def check_fail2ban():
 def check_spamassassin():
     output = run('ps -ef | grep spamd')
     if "pid" not in output:
-        print colored(run_error_text, 'red')
+        print(colored(run_error_text, 'red'))
         output = run('su - -c "service spamd restart"')
         print(output)
 
@@ -157,7 +157,7 @@ def check_spamassassin():
 def check_postfix():
     output = run('ps -ef | grep postfix')
     if "postfix/master" not in output:
-        print colored(run_error_text, 'red')
+        print(colored(run_error_text, 'red'))
         output = run('su - -c "service postfix restart"')
         print(output)
 
