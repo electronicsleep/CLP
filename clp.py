@@ -24,6 +24,7 @@ def main(count, verbose):
     print("Date:" + localtime)
 
     x = 0
+    line = ""
     found_list = []
 
     for x in range(count):
@@ -36,22 +37,21 @@ def main(count, verbose):
         print("# Python open file example")
         file_path = "data.txt"
         if os.path.exists(file_path):
-          with open(file_path, 'rU') as f:
-              for line in f:
-                  line_num += 1
-                  if 'bar' in line:
-                      print("found bar")
-                      found_list.append("found bar")
-                  print(line.strip())
+            with open(file_path, 'rU') as f:
+                for line in f:
+                    line_num += 1
+                    if 'bar' in line:
+                        print("found bar")
+                        found_list.append("found bar")
+                print(line.strip())
         else:
-          print("Data file not found")
+            print("Data file not found")
 
         print('lines: ' + str(line_num))
         print("#" * 10)
 
         line_num = 0
 
-        
         print("# Python subprocess example, find number of python files in dir")
         command = 'ls -ltra'
         num_files = 0
